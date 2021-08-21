@@ -123,21 +123,21 @@ public class RHServiceTest {
     @Test
     public void buscarProfessor(){
         inserirFuncionarios();
-        assertEquals(rh.obterFuncionario(cpfJonas), profJonas, "Deve ser possivel achar esse professor");
+        assertEquals(profJonas, rh.obterFuncionario(cpfJonas),"Deve ser possivel achar esse professor");
 
     }
 
     @Test
     public void buscarSTA(){
         inserirFuncionarios();
-        assertEquals(rh.obterFuncionario(cpfMiriam), staMiriam, "Deve ser possivel achar esse STA");
+        assertEquals(staMiriam, rh.obterFuncionario(cpfMiriam),"Deve ser possivel achar esse STA");
 
     }
 
     @Test
     public void buscarTerceirizado(){
         inserirFuncionarios();
-        assertEquals(rh.obterFuncionario(cpfCarla), tercCarla, "Deve ser possivel achar esse terceirizado");
+        assertEquals(tercCarla, rh.obterFuncionario(cpfCarla), "Deve ser possivel achar esse terceirizado");
     }
 
     @Test
@@ -147,8 +147,8 @@ public class RHServiceTest {
         assertTrue(rh.remover(cpfLacerda));
         assertTrue(rh.remover(cpfAlessio));
 
-        assertEquals(rh.obterFuncionario(cpfAlessio), null, "Este funcionario foi removido antes");
-        assertEquals(rh.obterFuncionario(cpfLacerda), null, "Este funcionario foi removido antes");
+        assertEquals(null, rh.obterFuncionario(cpfAlessio), "Este funcionario foi removido antes");
+        assertEquals(null, rh.obterFuncionario(cpfLacerda), "Este funcionario foi removido antes");
     }
 
     @Test
@@ -160,8 +160,8 @@ public class RHServiceTest {
         rh.cadastrar(profChico);
         rh.cadastrar(profX);
 
-        assertEquals(rh.getFuncionariosPorCategoria(IRHService.Tipo.PROF),
-                Arrays.asList(profAlessio, profChico, profJonas, profX),
+        assertEquals(Arrays.asList(profAlessio, profChico, profJonas, profX),
+                rh.getFuncionariosPorCategoria(IRHService.Tipo.PROF),
                 "A lista deve conter os mesmo funcionario e deve estar ordenada pelo nome funcionario");
     }
 
@@ -174,8 +174,8 @@ public class RHServiceTest {
         rh.cadastrar(profChico);
         rh.cadastrar(profX);
 
-        assertEquals(rh.getFuncionariosPorCategoria(STA),
-                Arrays.asList(staLacerda, staMiriam),
+        assertEquals(Arrays.asList(staLacerda, staMiriam),
+                rh.getFuncionariosPorCategoria(STA),
                 "A lista deve conter os mesmo funcionario e deve estar ordenada pelo nome funcionario");
     }
 
@@ -183,8 +183,8 @@ public class RHServiceTest {
     public void buscarTodosOsTerceirizados(){
         inserirFuncionarios();
 
-        assertEquals(rh.getFuncionariosPorCategoria(IRHService.Tipo.TERC),
-                Arrays.asList(tercAdriana, tercCarla),
+        assertEquals(Arrays.asList(tercAdriana, tercCarla),
+                rh.getFuncionariosPorCategoria(IRHService.Tipo.TERC),
                 "A lista deve conter os mesmo funcionario e deve estar ordenada pelo nome funcionario");
     }
 
@@ -192,9 +192,8 @@ public class RHServiceTest {
     public void buscarTodosOsFuncionarios(){
         inserirFuncionarios();
 
-        assertEquals(rh.getFuncionarios(),
-                Arrays.asList(tercAdriana, profAlessio, tercCarla, profJonas,
-                        staLacerda, staMiriam),
+        assertEquals(Arrays.asList(tercAdriana, profAlessio, tercCarla, profJonas, staLacerda, staMiriam),
+                rh.getFuncionarios(),
                 "A lista deve conter os mesmo funcionario e deve estar ordenada pelo nome funcionario");
     }
 
