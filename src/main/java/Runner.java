@@ -1,9 +1,9 @@
-import aluno.base.Funcionario;
-import aluno.base.Professor;
-import aluno.base.STA;
-import aluno.base.Terceirizado;
-import aluno.manager.RHService;
-import cliente.IRHService;
+import br.ufc.quixada.gestao.RHService;
+import br.ufc.quixada.gestao.contrato.IRHService;
+import br.ufc.quixada.gestao.model.Funcionario;
+import br.ufc.quixada.gestao.model.Professor;
+import br.ufc.quixada.gestao.model.STA;
+import br.ufc.quixada.gestao.model.Terceirizado;
 
 public class Runner {
 
@@ -42,7 +42,7 @@ public class Runner {
         rh.partilharLucros(20000);
 
         for (Funcionario f: rh.getFuncionarios()) {
-            System.out.println(f.getNome() + "(cpf=" + f.getCpf() + ") -> salario=" + f.getSalario());
+            System.out.println(f.getNome() + "(cpf=" + f.getCpf() + ") -> salario=" + f.getSalarioBase());
         }
         //Adriana(cpf=78) -> salario=5500.0
         //Alessio(cpf=15) -> salario=9000.0

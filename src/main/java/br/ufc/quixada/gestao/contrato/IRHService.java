@@ -1,8 +1,8 @@
-package cliente;
+package br.ufc.quixada.gestao.contrato;
 
 import java.util.List;
 
-import aluno.base.Funcionario;
+import br.ufc.quixada.gestao.model.Funcionario;
 
 /**
  * @author bruno
@@ -34,7 +34,7 @@ import aluno.base.Funcionario;
  */
 public interface IRHService{
 
-    public enum Tipo{PROF, STA, TERC};
+    enum Tipo{PROF, STA, TERC};
 
     /**
      * Adiciona um funcionario na folha de pagamento
@@ -111,10 +111,9 @@ public interface IRHService{
      * cada funcionario deve receber 100 reais.
      *
      * @param valor do lucro a ser partilhado
-     * @return false se nao houverem funcionarios cadastrados,
-     * true caso contrario
+     *
      */
-    boolean partilharLucros(double valor);
+    void partilharLucros(double valor);
 
 
     /**

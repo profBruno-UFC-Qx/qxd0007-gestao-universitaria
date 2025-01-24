@@ -1,6 +1,4 @@
-package aluno.base;
-
-import cliente.IRHService;
+package br.ufc.quixada.gestao.model;
 
 public class Professor extends Funcionario {
 

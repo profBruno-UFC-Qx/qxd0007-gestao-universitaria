@@ -1,4 +1,4 @@
-package aluno.base;
+package br.ufc.quixada.gestao.model;
 
 public class Terceirizado extends Funcionario{
 

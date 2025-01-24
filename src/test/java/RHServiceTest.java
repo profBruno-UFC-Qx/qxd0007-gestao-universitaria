@@ -1,14 +1,14 @@
-import aluno.base.Professor;
-import aluno.base.STA;
-import aluno.base.Terceirizado;
-import aluno.manager.RHService;
-import cliente.IRHService;
+import br.ufc.quixada.gestao.model.Professor;
+import br.ufc.quixada.gestao.model.STA;
+import br.ufc.quixada.gestao.model.Terceirizado;
+import br.ufc.quixada.gestao.RHService;
+import br.ufc.quixada.gestao.contrato.IRHService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static cliente.IRHService.Tipo.STA;
+import static br.ufc.quixada.gestao.contrato.IRHService.Tipo.STA;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RHServiceTest {
@@ -324,7 +324,7 @@ public class RHServiceTest {
 
         assertEquals(10000.0, rh.calcularFolhaDePagamento(), 0.01);
 
-        assertTrue(rh.partilharLucros(6.00));
+        rh.partilharLucros(6.00);
 
         assertEquals(2002.0, rh.calcularSalarioDoFuncionario(cpfMiriam), 0.01,
                 "Salarios com participacao nos lucros incorreto");

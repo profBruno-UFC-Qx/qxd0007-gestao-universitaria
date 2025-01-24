@@ -1,4 +1,4 @@
-package aluno.base;
+package br.ufc.quixada.gestao.model;
 
 public class Funcionario {
 
@@ -10,7 +10,7 @@ public class Funcionario {
         return null;
     }
 
-    public double getSalario() {
-        return 0.0;
+    public double getSalarioBase() {
+        return -10.0;
     }
 }

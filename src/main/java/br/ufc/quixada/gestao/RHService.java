@@ -1,7 +1,7 @@
-package aluno.manager;
+package br.ufc.quixada.gestao;
 
-import aluno.base.Funcionario;
-import cliente.IRHService;
+import br.ufc.quixada.gestao.model.Funcionario;
+import br.ufc.quixada.gestao.contrato.IRHService;
 
 import java.util.List;
 
@@ -44,9 +44,7 @@ public class RHService implements IRHService {
     }
 
     @Override
-    public boolean partilharLucros(double valor) {
-        return false;
-    }
+    public void partilharLucros(double valor) {}
 
     @Override
     public void iniciarMes() {
