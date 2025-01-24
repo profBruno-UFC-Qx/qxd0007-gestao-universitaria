@@ -1,3 +1,8 @@
+# Package Files #
+*.jar
+*.war
+*.ear
+
 # From https://github.com/github/gitignore/blob/master/Gradle.gitignore
 .gradle
 /build/
@@ -6,7 +11,7 @@
 gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
 
 # Cache of project
 .gradletasknamecache
@@ -21,11 +26,6 @@ gradle-app.setting
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
