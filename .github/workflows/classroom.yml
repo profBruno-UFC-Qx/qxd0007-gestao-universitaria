@@ -48,7 +48,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve cadastrar funcionário duplicado
+      - name: Deve cadastrar funcionario duplicado
         id: cadastrar-funcionario-duplicado
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -57,7 +57,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve cadastrar professor com classe invalida
+      - name: Deve cadastrar professor com classe invalida
         id: cadastrar-professor-com-classe-invalida
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -66,7 +66,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve cadastrar stacom nivel invalido
+      - name: Deve cadastrar stacom nivel invalido
         id: cadastrar-stacom-nivel-invalido
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -75,7 +75,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve remover funcionário
+      - name: Deve remover funcionario
         id: remover-funcionario
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -84,7 +84,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve remover funcionário duas vezes
+      - name: Deve remover funcionario duas vezes
         id: remover-funcionario-duas-vezes
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -93,7 +93,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve remover funcionário inexistente
+      - name: Deve remover funcionario inexistente
         id: remover-funcionario-inexistente
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -102,7 +102,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve encontrar professor
+      - name: Deve buscar professor
         id: buscar-professor
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -111,7 +111,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve encontrar sta
+      - name: Deve buscar sta
         id: buscar-sta
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -120,7 +120,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve encontrar terceirizado
+      - name: Deve buscar terceirizado
         id: buscar-terceirizado
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -129,7 +129,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve encontrar funcionários nao existente
+      - name: Deve buscar funcionarios nao existente
         id: buscar-funcionarios-nao-existente
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -138,7 +138,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve encontrar todos os professores
+      - name: Deve buscar todos os professores
         id: buscar-todos-os-professores
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -147,7 +147,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve encontrar todos os stas
+      - name: Deve buscar todos os stas
         id: buscar-todos-os-stas
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -156,7 +156,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve encontrar todos os terceirizados
+      - name: Deve buscar todos os terceirizados
         id: buscar-todos-os-terceirizados
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -165,7 +165,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve encontrar todos os funcionários
+      - name: Deve buscar todos os funcionarios
         id: buscar-todos-os-funcionarios
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -174,7 +174,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular o salário de um professor
+      - name: Deve calcular salario professor
         id: calcular-salario-professor
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -183,7 +183,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular o salário de um STA
+      - name: Deve calcular salario sta
         id: calcular-salario-sta
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -192,7 +192,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular o salário de um terceirizado
+      - name: Deve calcular salario terceirizados
         id: calcular-salario-terceirizados
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -201,7 +201,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular o salário de um professor com diaria
+      - name: Deve salario professor com diaria
         id: salario-professor-com-diaria
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -210,7 +210,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular o salário de um STA com diaria
+      - name: Deve salario stacom diaria
         id: salario-stacom-diaria
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -228,7 +228,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve atribuir diárias além dos limite professores
+      - name: Deve diaria alem do limite professor
         id: diaria-alem-do-limite-professor
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -237,7 +237,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Não deve atribuir diárias além do limite dos STA
+      - name: Deve diaria alem do limite sta
         id: diaria-alem-do-limite-sta
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -246,7 +246,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular folha vazia corretamente
+      - name: Deve calcular folha vazia
         id: calcular-folha-vazia
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -255,7 +255,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular folha corretamente
+      - name: Deve calcular folha
         id: calcular-folha
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -264,7 +264,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular a folha com diarias corretamente
+      - name: Deve calcular folha com diarias
         id: calcular-folha-com-diarias
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -273,7 +273,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve calcular a participação nos lucros
+      - name: Deve participacao nos lucros
         id: participacao-nos-lucros
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -282,7 +282,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve incluir a particação nos lucros na folha de pagamento
+      - name: Deve calcular folha com pl
         id: calcular-folha-com-pl
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -291,7 +291,7 @@ jobs:
           timeout: 10
           max-score: 5
 
-      - name: Deve reiniciar lucro e diárias no começo do mês
+      - name: Deve iniciando novo mes
         id: iniciando-novo-mes
         uses: classroom-resources/autograding-command-grader@v1
         with:
@@ -335,4 +335,5 @@ jobs:
           PARTICIPACAO-NOS-LUCROS_RESULTS: "${{steps.participacao-nos-lucros.outputs.result}}"
           CALCULAR-FOLHA-COM-PL_RESULTS: "${{steps.calcular-folha-com-pl.outputs.result}}"
           INICIANDO-NOVO-MES_RESULTS: "${{steps.iniciando-novo-mes.outputs.result}}"
+        with:
           runners: cadastrar-terceirizado,cadastrar-sta,cadastrar-professor,cadastrar-funcionario-duplicado,cadastrar-professor-com-classe-invalida,cadastrar-stacom-nivel-invalido,remover-funcionario,remover-funcionario-duas-vezes,remover-funcionario-inexistente,buscar-professor,buscar-sta,buscar-terceirizado,buscar-funcionarios-nao-existente,buscar-todos-os-professores,buscar-todos-os-stas,buscar-todos-os-terceirizados,buscar-todos-os-funcionarios,calcular-salario-professor,calcular-salario-sta,calcular-salario-terceirizados,salario-professor-com-diaria,salario-stacom-diaria,salario-terceirizado-com-diaria,diaria-alem-do-limite-professor,diaria-alem-do-limite-sta,calcular-folha-vazia,calcular-folha,calcular-folha-com-diarias,participacao-nos-lucros,calcular-folha-com-pl,iniciando-novo-mes
