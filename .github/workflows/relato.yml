@@ -1,6 +1,10 @@
 name: Validar Relato
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   validar-relato:
     uses: profBruno-UFC-Qx/kit-projeto-final/.github/workflows/validar-relato.yml@main
+    with:
+      project_number: 7
+    secrets: inherit
