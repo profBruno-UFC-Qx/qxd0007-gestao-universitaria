@@ -1,0 +1,6 @@
+name: Testes
+on:
+  push:
+jobs:
+  testes:
+    uses: profBruno-UFC-Qx/kit-atividades-praticas/.github/workflows/testes.yml@main

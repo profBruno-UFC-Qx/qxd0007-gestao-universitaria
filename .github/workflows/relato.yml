@@ -1,0 +1,6 @@
+name: Validar Relato
+on:
+  push:
+jobs:
+  validar-relato:
+    uses: profBruno-UFC-Qx/kit-atividades-praticas/.github/workflows/validar-relato.yml@main
