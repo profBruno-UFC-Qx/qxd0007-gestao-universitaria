@@ -3,4 +3,4 @@ on:
   push:
 jobs:
   validar-relato:
-    uses: profBruno-UFC-Qx/kit-atividades-praticas/.github/workflows/validar-relato.yml@main
+    uses: profBruno-UFC-Qx/kit-projeto-final/.github/workflows/validar-relato.yml@main
