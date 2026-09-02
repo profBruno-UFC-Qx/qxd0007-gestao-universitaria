@@ -21,12 +21,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Dar permissão de execução ao gradlew
+        run: chmod +x ./gradlew
+
       - name: Deve cadastrar terceirizado
         id: cadastrar-terceirizado
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: cadastrar-terceirizado
-          command: gradle test --tests 'RHServiceTest.cadastrarTerceirizado'
+          command: ./gradlew test --tests 'RHServiceTest.cadastrarTerceirizado'
           timeout: 10
           max-score: 5
 
@@ -35,7 +44,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: cadastrar-sta
-          command: gradle test --tests 'RHServiceTest.cadastrarSTA'
+          command: ./gradlew test --tests 'RHServiceTest.cadastrarSTA'
           timeout: 10
           max-score: 5
 
@@ -44,7 +53,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: cadastrar-professor
-          command: gradle test --tests 'RHServiceTest.cadastrarProfessor'
+          command: ./gradlew test --tests 'RHServiceTest.cadastrarProfessor'
           timeout: 10
           max-score: 5
 
@@ -53,7 +62,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: cadastrar-funcionario-duplicado
-          command: gradle test --tests 'RHServiceTest.cadastrarFuncionarioDuplicado'
+          command: ./gradlew test --tests 'RHServiceTest.cadastrarFuncionarioDuplicado'
           timeout: 10
           max-score: 5
 
@@ -62,7 +71,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: cadastrar-professor-com-classe-invalida
-          command: gradle test --tests 'RHServiceTest.cadastrarProfessorComClasseInvalida'
+          command: ./gradlew test --tests 'RHServiceTest.cadastrarProfessorComClasseInvalida'
           timeout: 10
           max-score: 5
 
@@ -71,7 +80,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: cadastrar-stacom-nivel-invalido
-          command: gradle test --tests 'RHServiceTest.cadastrarSTAComNivelInvalido'
+          command: ./gradlew test --tests 'RHServiceTest.cadastrarSTAComNivelInvalido'
           timeout: 10
           max-score: 5
 
@@ -80,7 +89,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: remover-funcionario
-          command: gradle test --tests 'RHServiceTest.removerFuncionario'
+          command: ./gradlew test --tests 'RHServiceTest.removerFuncionario'
           timeout: 10
           max-score: 5
 
@@ -89,7 +98,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: remover-funcionario-duas-vezes
-          command: gradle test --tests 'RHServiceTest.removerFuncionarioDuasVezes'
+          command: ./gradlew test --tests 'RHServiceTest.removerFuncionarioDuasVezes'
           timeout: 10
           max-score: 5
 
@@ -98,7 +107,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: remover-funcionario-inexistente
-          command: gradle test --tests 'RHServiceTest.removerFuncionarioInexistente'
+          command: ./gradlew test --tests 'RHServiceTest.removerFuncionarioInexistente'
           timeout: 10
           max-score: 5
 
@@ -107,7 +116,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-professor
-          command: gradle test --tests 'RHServiceTest.buscarProfessor'
+          command: ./gradlew test --tests 'RHServiceTest.buscarProfessor'
           timeout: 10
           max-score: 5
 
@@ -116,7 +125,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-sta
-          command: gradle test --tests 'RHServiceTest.buscarSTA'
+          command: ./gradlew test --tests 'RHServiceTest.buscarSTA'
           timeout: 10
           max-score: 5
 
@@ -125,7 +134,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-terceirizado
-          command: gradle test --tests 'RHServiceTest.buscarTerceirizado'
+          command: ./gradlew test --tests 'RHServiceTest.buscarTerceirizado'
           timeout: 10
           max-score: 5
 
@@ -134,7 +143,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-funcionarios-nao-existente
-          command: gradle test --tests 'RHServiceTest.buscarFuncionariosNaoExistente'
+          command: ./gradlew test --tests 'RHServiceTest.buscarFuncionariosNaoExistente'
           timeout: 10
           max-score: 5
 
@@ -143,7 +152,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-todos-os-professores
-          command: gradle test --tests 'RHServiceTest.buscarTodosOsProfessores'
+          command: ./gradlew test --tests 'RHServiceTest.buscarTodosOsProfessores'
           timeout: 10
           max-score: 5
 
@@ -152,7 +161,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-todos-os-stas
-          command: gradle test --tests 'RHServiceTest.buscarTodosOsSTAs'
+          command: ./gradlew test --tests 'RHServiceTest.buscarTodosOsSTAs'
           timeout: 10
           max-score: 5
 
@@ -161,7 +170,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-todos-os-terceirizados
-          command: gradle test --tests 'RHServiceTest.buscarTodosOsTerceirizados'
+          command: ./gradlew test --tests 'RHServiceTest.buscarTodosOsTerceirizados'
           timeout: 10
           max-score: 5
 
@@ -170,7 +179,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: buscar-todos-os-funcionarios
-          command: gradle test --tests 'RHServiceTest.buscarTodosOsFuncionarios'
+          command: ./gradlew test --tests 'RHServiceTest.buscarTodosOsFuncionarios'
           timeout: 10
           max-score: 5
 
@@ -179,7 +188,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: calcular-salario-professor
-          command: gradle test --tests 'RHServiceTest.calcularSalarioProfessor'
+          command: ./gradlew test --tests 'RHServiceTest.calcularSalarioProfessor'
           timeout: 10
           max-score: 5
 
@@ -188,7 +197,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: calcular-salario-sta
-          command: gradle test --tests 'RHServiceTest.calcularSalarioSTA'
+          command: ./gradlew test --tests 'RHServiceTest.calcularSalarioSTA'
           timeout: 10
           max-score: 5
 
@@ -197,7 +206,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: calcular-salario-terceirizados
-          command: gradle test --tests 'RHServiceTest.calcularSalarioTerceirizados'
+          command: ./gradlew test --tests 'RHServiceTest.calcularSalarioTerceirizados'
           timeout: 10
           max-score: 5
 
@@ -206,7 +215,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: salario-professor-com-diaria
-          command: gradle test --tests 'RHServiceTest.salarioProfessorComDiaria'
+          command: ./gradlew test --tests 'RHServiceTest.salarioProfessorComDiaria'
           timeout: 10
           max-score: 5
 
@@ -215,7 +224,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: salario-stacom-diaria
-          command: gradle test --tests 'RHServiceTest.salarioSTAComDiaria'
+          command: ./gradlew test --tests 'RHServiceTest.salarioSTAComDiaria'
           timeout: 10
           max-score: 5
 
@@ -224,7 +233,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: salario-terceirizado-com-diaria
-          command: gradle test --tests 'RHServiceTest.salarioTerceirizadoComDiaria'
+          command: ./gradlew test --tests 'RHServiceTest.salarioTerceirizadoComDiaria'
           timeout: 10
           max-score: 5
 
@@ -233,7 +242,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: diaria-alem-do-limite-professor
-          command: gradle test --tests 'RHServiceTest.diariaAlemDoLimiteProfessor'
+          command: ./gradlew test --tests 'RHServiceTest.diariaAlemDoLimiteProfessor'
           timeout: 10
           max-score: 5
 
@@ -242,7 +251,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: diaria-alem-do-limite-sta
-          command: gradle test --tests 'RHServiceTest.diariaAlemDoLimiteSTA'
+          command: ./gradlew test --tests 'RHServiceTest.diariaAlemDoLimiteSTA'
           timeout: 10
           max-score: 5
 
@@ -251,7 +260,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: calcular-folha-vazia
-          command: gradle test --tests 'RHServiceTest.calcularFolhaVazia'
+          command: ./gradlew test --tests 'RHServiceTest.calcularFolhaVazia'
           timeout: 10
           max-score: 5
 
@@ -260,7 +269,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: calcular-folha
-          command: gradle test --tests 'RHServiceTest.calcularFolha'
+          command: ./gradlew test --tests 'RHServiceTest.calcularFolha'
           timeout: 10
           max-score: 5
 
@@ -269,7 +278,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: calcular-folha-com-diarias
-          command: gradle test --tests 'RHServiceTest.calcularFolhaComDiarias'
+          command: ./gradlew test --tests 'RHServiceTest.calcularFolhaComDiarias'
           timeout: 10
           max-score: 5
 
@@ -278,7 +287,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: participacao-nos-lucros
-          command: gradle test --tests 'RHServiceTest.participacaoNosLucros'
+          command: ./gradlew test --tests 'RHServiceTest.participacaoNosLucros'
           timeout: 10
           max-score: 5
 
@@ -287,7 +296,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: calcular-folha-com-pl
-          command: gradle test --tests 'RHServiceTest.calcularFolhaComPL'
+          command: ./gradlew test --tests 'RHServiceTest.calcularFolhaComPL'
           timeout: 10
           max-score: 5
 
@@ -296,7 +305,7 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: iniciando-novo-mes
-          command: gradle test --tests 'RHServiceTest.iniciandoNovoMes'
+          command: ./gradlew test --tests 'RHServiceTest.iniciandoNovoMes'
           timeout: 10
           max-score: 5
 

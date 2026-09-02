@@ -1,2 +1,7 @@
-rootProject.name = 'GestaoUniversitaria'
+plugins {
+    // Permite ao Gradle baixar automaticamente o JDK da toolchain (Java 21)
+    // caso ele não esteja instalado na máquina do aluno.
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
 
+rootProject.name = 'GestaoUniversitaria'
