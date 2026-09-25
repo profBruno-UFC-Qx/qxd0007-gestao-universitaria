@@ -4,7 +4,7 @@
 Fonte: <a href="https://br.freepik.com/vetores-gratis/ilustracao-do-conceito-de-contador_13766143.htm#fromView=search&page=1&position=6&uuid=54189124-07f3-4a54-9277-02fe2818dad1&query=payroll">Freepik</a>
 
 Nesta atividade você implementará o sistema que gerencia a folha de pagamento de uma universidade.
-A universidade possui três tipos de funcionários, cada um com características específicas: Professores, Servidores Técnicos Adminstrativos e Terceirizados.
+A universidade possui três tipos de funcionários, cada um com características específicas: Professores, Servidores Técnico-Administrativos (STA) e Terceirizados.
 
 
 ## 🎯 Requisitos Funcionais
@@ -18,22 +18,29 @@ A universidade possui três tipos de funcionários, cada um com características
         * Para STA: nível (1 a 30)
         * Para terceirizados: adicional de insalubridade (sim/não)
 * Não é permitido cadastrar funcionários com CPFs repetidos.
+* Não é permitido cadastrar professores com classe inválida (fora de A a E) nem STAs com nível inválido (fora de 1 a 30).
+* O cadastro retorna `true` se o funcionário foi adicionado e `false` caso contrário.
 
-### ✅ Buscar por funcionário  Buscar por funcionário
-* Permitir a busca de um funcionário pelo CPF, exibindo seus dados.
+### ✅ Buscar por funcionário
+* Permitir a busca de um funcionário pelo CPF, retornando o funcionário encontrado ou `null` caso ele não esteja cadastrado.
 
 
 ### ✅ Remover funcionário
 * Permitir a remoção de um funcionário da folha de pagamento, informando seu CPF.
+* A remoção retorna `false` se não houver funcionário cadastrado com o CPF informado.
 
 ### ✅ Emitir relatórios
 * Listar todos os funcionários cadastrados.
-* Listar funcionários de um cargo específico (professores, STAs ou terceirizados).
+* Listar funcionários de um cargo específico (professores, STAs ou terceirizados), usando o enum `IRHService.Tipo` (`PROF`, `STA` ou `TERC`).
+* Informar a quantidade total de funcionários cadastrados.
 * **As listas devem ser ordenadas pelo nome dos funcionários.**
 
 ### ✅ Calcular a folha de pagamento
 
 > O salário mensal de cada funcionário é calculado como: **Salário Base + Participação nos Lucros + Diárias**
+>
+> A folha de pagamento é a soma dos salários de todos os funcionários cadastrados.
+> Ao calcular o salário de um CPF que não está cadastrado, o resultado deve ser `null`.
 
 - Salário Base
     - Professores
@@ -60,26 +67,33 @@ A universidade possui três tipos de funcionários, cada um com características
 - Participação nos lucros
     - Implementar a divisão igualitária de lucros entre os funcionários cadastrados.
     - Exemplo: Se o lucro total for R$ 500 e houver 5 funcionários, cada funcionário receberá R$ 100.
-    - O cálculo do lucro é feito mensalmente
+    - O lucro é dividido apenas entre os funcionários cadastrados no momento em que `partilharLucros` é chamado. Quem for cadastrado depois não recebe parte dessa partilha.
+    - Se `partilharLucros` for chamado mais de uma vez no mesmo mês, os valores recebidos se acumulam.
+        - Exemplo: com 5 funcionários, partilhar R$ 500 e depois R$ 1.000 resulta em R$ 300 de participação para cada um.
+    - A participação nos lucros vale apenas para o mês corrente.
 
 - Diárias
     - Professores têm direito a até 3 diárias.
     - STAs têm direito a 1 diária.
     - Terceirizados não têm direito a diárias.
-    - Cada diária vale R$ 100 e o limite de diárias é reiniciado mensalmente.
+    - Cada diária vale R$ 100.
+    - Uma solicitação de diária retorna `false` quando o funcionário não tem direito a ela (cargo sem diárias ou limite atingido).
+
+### ✅ Iniciar um novo mês
+* Ao iniciar um novo mês, as diárias e a participação nos lucros de todos os funcionários são zeradas; o limite de diárias volta a valer do zero.
 
 ## 🧱 Diagrama
 
 ```mermaid
 classDiagram
-class Funcionario {
-<<abstract>>
-- String nome
-- String cpf
-+ getNome() String
-+ getCpf() String
-+ getSalarioBase() double
-}
+    class Funcionario {
+        <<abstract>>
+        - String nome
+        - String cpf
+        + getNome() String
+        + getCpf() String
+        + getSalarioBase()* double
+    }
 
     class Professor {
         - char classe
@@ -114,7 +128,15 @@ class Funcionario {
         + calcularFolhaDePagamento() double
     }
 
-    class RHService { 
+    class Tipo {
+        <<enumeration>>
+        PROF
+        STA
+        TERC
+    }
+    IRHService +-- Tipo
+
+    class RHService {
     }
     RHService ..|> IRHService
 ```
@@ -141,7 +163,7 @@ public class Runner {
 
     rh.remover("12");
     System.out.println("Total de funcionarios = " + rh.getTotalFuncionarios()); //Total de funcionarios = 5
-    System.out.println("Total de funcionarios = " + rh.getFuncionariosPorCategoria(IRHService.Tipo.TERC).size());
+    System.out.println("Total de terceirizados = " + rh.getFuncionariosPorCategoria(IRHService.Tipo.TERC).size()); //Total de terceirizados = 1
 
     rh.solicitarDiaria("16");
     rh.solicitarDiaria("16");
@@ -158,7 +180,7 @@ public class Runner {
     rh.partilharLucros(20000);
 
     for (Funcionario f: rh.getFuncionarios()) {
-      System.out.println(f.getNome() + "(cpf=" + f.getCpf() + ") -> salario=" + f.getSalario());
+      System.out.println(f.getNome() + "(cpf=" + f.getCpf() + ") -> salario=" + rh.calcularSalarioDoFuncionario(f.getCpf()));
     }
     //Adriana(cpf=78) -> salario=5500.0
     //Alessio(cpf=15) -> salario=9000.0

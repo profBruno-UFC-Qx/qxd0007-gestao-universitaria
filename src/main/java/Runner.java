@@ -25,7 +25,7 @@ public class Runner {
 
         rh.remover("12");
         System.out.println("Total de funcionarios = " + rh.getTotalFuncionarios()); //Total de funcionarios = 5
-        System.out.println("Total de funcionarios = " + rh.getFuncionariosPorCategoria(IRHService.Tipo.TERC).size());
+        System.out.println("Total de terceirizados = " + rh.getFuncionariosPorCategoria(IRHService.Tipo.TERC).size()); //Total de terceirizados = 1
 
         rh.solicitarDiaria("16");
         rh.solicitarDiaria("16");
@@ -42,7 +42,7 @@ public class Runner {
         rh.partilharLucros(20000);
 
         for (Funcionario f: rh.getFuncionarios()) {
-            System.out.println(f.getNome() + "(cpf=" + f.getCpf() + ") -> salario=" + f.getSalarioBase());
+            System.out.println(f.getNome() + "(cpf=" + f.getCpf() + ") -> salario=" + rh.calcularSalarioDoFuncionario(f.getCpf()));
         }
         //Adriana(cpf=78) -> salario=5500.0
         //Alessio(cpf=15) -> salario=9000.0

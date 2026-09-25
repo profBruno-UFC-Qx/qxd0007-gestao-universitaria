@@ -110,6 +110,10 @@ public interface IRHService{
      * Ex: Gratificacao de 500 reais. Se existirem 5 funcionarios,
      * cada funcionario deve receber 100 reais.
      *
+     * Apenas os funcionarios cadastrados no momento da chamada participam
+     * da partilha. Se o metodo for chamado mais de uma vez no mesmo mes,
+     * os valores recebidos por cada funcionario se acumulam.
+     *
      * @param valor do lucro a ser partilhado
      *
      */
